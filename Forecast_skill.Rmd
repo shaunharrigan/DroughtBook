@@ -1,7 +1,11 @@
 ---
-title: "R Notebook"
+title: "Forecast Skill Worked Example"
+author: Shaun Harrigan
 output: html_notebook
 ---
+
+# Get observed and forecast data
+
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
 
