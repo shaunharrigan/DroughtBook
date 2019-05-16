@@ -1,23 +1,48 @@
 ---
-title: "Forecast Skill Worked Example"
-author: Shaun Harrigan
-output: html_notebook
+title: "Forecast skill"
+author: "Shaun Harrigan"
+output: html_document
 ---
 
-# Get observed and forecast data
+#### Worked Example 13.1
 
+## Loading the data
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+In this example we will be calculating the *skill* of the Ensemble Streamflow Prediction (ESP) forecast method
+for the Lambourn catchment at Shaw gauging station in southern England (catchment area of 234.1 km^2^). 
+The dataset consists of monthly-averaged river discharge observations and ESP forecasts initialised on 1^st^ January for a one month lead time
+across the 1965 to 2014 hindcast period. The 50 forecasts each contain 51 ensemble members.
+The units for both observations and forecasts are m^3^s^-1^.
+More detail on how these data were generated can be found in Harrigan et al. (2018).
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+First we load the dataset and create the variables we will use in later calculations:
 
 ```{r}
-plot(cars)
+# Load the data 
+inFolder <- "/Users/shaunharrigan/Dropbox/Projects/Drought_book/Worked_example/Data/"
+fcst_dataset <- read.csv(paste0(inFolder, "forecast_data.csv"), header = TRUE) 
+dim(fcst_dataset) # Check dimentions of dataset
+
+# Subset observations vector 
+obs <- fcst_dataset$Observed_flow
+
+# Subset ensemble forecast matrix
+fcst_ens <- fcst_dataset[ ,3:53]
+
+# Plot observed and ensemble forecast
+boxplot(t(fcst_ens), xlab = "Hindcast year", ylab = "Flow (cumecs)")
+lines(obs, col = "red")
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+## Calculate low flow index from observations 
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+XXX
+
+## Evaluate ability of ESP to forecast low flows
+
+
+XXX
+
+## End
 
