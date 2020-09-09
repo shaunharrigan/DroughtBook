@@ -26,7 +26,8 @@ obs <- fcst_dataset$Observed_flow
 fcst_ens <- fcst_dataset[ ,3:53]
 
 # Plot observed and ensemble forecast
-boxplot(t(fcst_ens), xlab = "Hindcast year", ylab = "Flow (cumecs)", xaxt = "n", range = 0)
+par(mar=c(4, 5, 1, 1))
+boxplot(t(fcst_ens), xlab = "Hindcast year", ylab = expression('Flow (m'^"3"*'/s)'), xaxt = "n", range = 0)
 axis(side = 1, at = 1:50, labels = fcst_dataset$Year)
 lines(obs)
 ```
@@ -91,9 +92,3 @@ We can compute the **Brier Skill Score** of the ESP forecast for predicting Q90 
 BSS <- (BS_esp - BS_bench) / (0 - BS_bench)
 BSS
 ```
-
-
-
-
-#### End ------
-
